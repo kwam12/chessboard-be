@@ -9,7 +9,7 @@ import { Server, Socket } from "socket.io";
 import { v4 as uuid } from "uuid";
 import { ChatService } from "./chat.service";
 
-@WebSocketGateway({ cors: true })
+@WebSocketGateway({ cors: true, pingTimeout: 60000 })
 export class ChatGateway {
   rooms: Map<string, string> = new Map();
 
