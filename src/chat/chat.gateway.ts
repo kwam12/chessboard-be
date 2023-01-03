@@ -19,6 +19,7 @@ export class ChatGateway {
   server: Server;
 
   handleDisconnect(client: Socket) {
+    console.log(client.id, "disconnected");
     const roomId = this.rooms.get(client.id);
     if (!roomId) return;
 
@@ -74,6 +75,7 @@ export class ChatGateway {
 
   @SubscribeMessage("gameover")
   gameover(@ConnectedSocket() client: Socket) {
+    console.log(client.id, "gameover");
     const roomId = this.rooms.get(client.id);
     if (!roomId) return;
 
